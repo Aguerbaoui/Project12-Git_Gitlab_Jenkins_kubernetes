@@ -15,7 +15,7 @@ pipeline {
                 steps {
                     
                      //sh script: 'mvn clean package -Dmaven.test.skip=true'
-                     sh 'python3 /source_code/server.py'
+                     sh 'python3 source_code/server.py'
                 }
         }
      
