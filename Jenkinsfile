@@ -4,7 +4,7 @@ pipeline {
     
         stage('git clone') {
                 steps {
-                     git branch: 'main', credentialsId: 'jenkins', url: 'git@gitlab.com:Aguerbaoui/projet12.git'
+                     git branch: 'master', credentialsId: 'jenkins', url: 'git@gitlab.com:Aguerbaoui/projet12.git'
             
             
                 }
