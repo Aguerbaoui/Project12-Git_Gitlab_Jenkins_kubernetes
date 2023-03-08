@@ -13,12 +13,12 @@ pipeline {
 
         stage('Build') {
                 steps {
-                    {
+                    
                      //sh script: 'mvn clean package -Dmaven.test.skip=true'
                      sh 'python3 server.py'
                 }
         }
-     }
+     
 /*
           stage('Docker Build and Tag') {
            steps {
