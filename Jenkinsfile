@@ -6,21 +6,22 @@ pipeline {
                 steps {
                      git branch: 'master', credentialsId: 'jenkins', url: 'git@gitlab.com:Aguerbaoui/projet12.git'
             
-            
                 }
         
         }
 
-          stage('Docker Build and Tag') {
-           steps {
-            sh 'docker build -t nadiaaguerbaoui1/flask-app-image:latest .'
+        stage('Docker Build and Tag') {
+              steps {
+                    sh 'docker build -t nadiaaguerbaoui1/flask-app-image:latest .'
            
-               }
+                    }
+            
+            
             }
 
 
 
-           stage('Publish image to Docker Hub') {
+        stage('Publish image to Docker Hub') {
           
             steps {
                 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
@@ -32,7 +33,7 @@ pipeline {
           }
         }
 
-       /* stage('Deploy to k8s cluster'){
+     /*   stage('Deploy to k8s cluster'){
             steps{
 
                  script{
@@ -40,10 +41,10 @@ pipeline {
                     kubernetesDeploy configs: 'deploservice.yaml', kubeConfig: [path: ''], kubeconfigId: 'kubeconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
                 }
 
-         }*/
+         }
 
 
-     }   
+     }   */
 
   
      
