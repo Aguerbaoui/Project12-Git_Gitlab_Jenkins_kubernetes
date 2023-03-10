@@ -1,11 +1,9 @@
 FROM python:3.8-slim-buster
-
 #WORKDIR /app
 # Copy the requirements file into the container
-
-
-COPY /var/lib/jenkins/workspace/Project12/source_code/requirements.txt /app
-#COPY ./requirements.txt /app
+WORKDIR /app
+# Copy the requirements file into the container
+COPY requirements.txt .
 # Install the required packages
 RUN pip install  --no-cache-dir  -r requirements.txt
 COPY . .
