@@ -15,11 +15,7 @@ pipeline {
                     sh 'docker build -t nadiaaguerbaoui1/flask-app-image:latest .'
            
                     }
-            
-            
             }
-
-
 
         stage('Publish image to Docker Hub') {
           
@@ -27,9 +23,7 @@ pipeline {
                 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
                    
                    sh 'docker push nadiaaguerbaoui1/flask-app-image:latest'
-                   }
-      
-                  
+                   }    
           }
         }
 
