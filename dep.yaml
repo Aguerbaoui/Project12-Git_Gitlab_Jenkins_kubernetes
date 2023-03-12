@@ -16,43 +16,16 @@ spec:
       containers:
       - name: flask-app
         image: nadiaaguerbaoui1/flask-app-image:latest
-        env:
-        - name: MYSQL_ROOT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: flask-mysql-secrets
-              key: MYSQL_ROOT_PASSWORD
-        - name: MYSQL_USER
-          valueFrom:
-            secretKeyRef:
-              name: flask-mysql-secrets
-              key: MYSQL_USER
-        - name: MYSQL_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: flask-mysql-secrets
-              key: MYSQL_PASSWORD
-        - name: MYSQL_DATABASE
-          valueFrom:
-            secretKeyRef:
-              name: flask-mysql-secrets
-              key: MYSQL_DATABASE
         ports:
         - containerPort: 5000
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 5000
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 5000
+        env:
+        - name: DB_HOST
+          value: mysql-service
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: flask-service
-  namespace: default
 spec:
   selector:
     app: flask-app
