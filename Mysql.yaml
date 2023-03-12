@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: mysql:latest
+        image: nadiaaguerbaoui1/mysql-app-image:latest
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
