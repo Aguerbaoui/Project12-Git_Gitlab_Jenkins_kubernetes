@@ -12,8 +12,8 @@ pipeline {
           
         stage('Docker Build and Tag MySQL Image') {
               steps {
-                    sh 'cd database'
-                    sh 'docker build -t nadiaaguerbaoui1/mysql-app-image:latest .'
+                   // sh 'cd database'
+                    sh 'docker build /var/lib/jenkins/workspace/Project12/database -t nadiaaguerbaoui1/mysql-app-image:latest .'
            
                     }
             }
