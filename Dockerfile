@@ -1,10 +1,10 @@
-FROM python:3.8-slim-buster
+FROM python:3.5-alpine
+
 WORKDIR /app
-COPY ./requirements.txt /app
-RUN pip install  --no-cache-dir  -r requirements.txt
-COPY . .
 
-EXPOSE 5000
-ENV FLASK_APP=server.py
+COPY source_code/ /app
+RUN pip install -r requirements.txt
 
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+
+EXPOSE 8181
+ENTRYPOINT [ "python", "server.py" ]
