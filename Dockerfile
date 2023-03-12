@@ -10,7 +10,7 @@ WORKDIR /app
 
 # Create a non-root user
 RUN adduser --disabled-password --gecos '' dev
-RUN chown -R appuser /app
+RUN chown -R dev /app
 USER dev
 
 COPY requirements.txt .
