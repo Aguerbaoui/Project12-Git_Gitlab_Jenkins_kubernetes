@@ -1,20 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flask-mysql
+  name: mysqlflaskservice
   namespace: default
 spec:
   selector:
     matchLabels:
-      app: flask-mysql
+      app: mysqlflaskservice
   replicas: 1
   template:
     metadata:
       labels:
-        app: flask-mysql
-    spec:
+        app: mysqlflaskservice
       containers:
-      - name: mysql
+      - name: mysqlflaskservice
         image: nadiaaguerbaoui1/mysql-app-image:latest
         env:
         - name: MYSQL_ROOT_PASSWORD
@@ -39,7 +38,7 @@ spec:
               key: MYSQL_DATABASE
         ports:
         - containerPort: 3306
-          name: mysql
+          name: mysqlflaskservice
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: /var/lib/mysql
@@ -51,13 +50,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql-service
+  name: mysqlflaskservice
   namespace: default
 spec:
   selector:
     app: flask-mysql
   ports:
-  - name: mysql
+  - name: mysqlflaskservice
     port: 3306
     targetPort: 3306
   clusterIP: None
