@@ -20,19 +20,8 @@ pipeline {
                  
            
                     }
-            }
-
-        stage('Publish MySQL image to Docker Hub') {
-          
-            steps {
-                withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
-                   
-                   sh 'docker push nadiaaguerbaoui1/mysql-app-image:latest'
-                   }    
-          }
         }
 
-            
         stage('Docker Build and Tag Flask Image') {
               steps {
                     sh 'docker build -t nadiaaguerbaoui1/flask-app-image:latest .'
@@ -40,12 +29,13 @@ pipeline {
                     }
             }
           
-          stage('Publish Flask image  to Docker Hub') {
+        stage('Publish images  to Docker Hub') {
           
             steps {
                 withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
                    
                    sh 'docker push nadiaaguerbaoui1/flask-app-image:latest'
+                   sh 'docker push nadiaaguerbaoui1/mysql-app-image:latest'
                    }    
           }
         }
