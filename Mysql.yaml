@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysqlflaskservice
+  name: mysql
   namespace: default
 spec:
   selector:
     matchLabels:
-      app: mysqlflaskservice
+      app: mysql
   replicas: 1
   template:
     metadata:
       labels:
-        app: mysqlflaskservice
+        app: mysql
     spec:
       containers:
-      - name: mysqlflaskservice
+      - name: mysql
         image: nadiaaguerbaoui1/mysql-app-image:latest
         ports:
         - containerPort: 3306
-          name: mysqlflaskservice
-    
+          name: mysql
+
 ---
 apiVersion: v1
 kind: Service
@@ -28,7 +28,7 @@ metadata:
   namespace: default
 spec:
   selector:
-    app: flask-mysql
+    app: mysql
   ports:
   - name: mysqlflaskservice
     port: 3306
