@@ -39,8 +39,8 @@ pipeline {
                    }    
           }
         }
-        
-     stage('Deploy to k8s cluster'){
+
+     stage('Deploy falsk dep to k8s cluster'){
             steps{
 
                  script{
