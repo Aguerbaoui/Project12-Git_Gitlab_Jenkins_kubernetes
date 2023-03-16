@@ -18,9 +18,6 @@ spec:
         image: nadiaaguerbaoui1/flask-app-image:latest
         ports:
         - containerPort: 8181
-        env:
-        - name: DB_HOST
-          value: mysqlflaskservice
 ---
 apiVersion: v1
 kind: Service
